@@ -1,0 +1,43 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int> a;
+        if (matrix.size() == 0)
+            return a;
+        int n = matrix.size(), m = matrix[0].size();
+        int p = n, p2 = 0, s2 = 1, s = m, l = 1, i = 0, j = 0;
+        cout << n << " " << m << endl;
+        a.push_back(matrix[0][0]);
+        while (l < n * m){
+            // right
+            while (j + 1 < s && l < n * m){
+                j++;
+                a.push_back(matrix[i][j]);
+                l++;
+            }
+            s--;
+            // down
+            while (i + 1 < p && l < n * m){
+                i++;
+                a.push_back(matrix[i][j]);
+                l++;
+            }
+            p--;
+            // left
+            while (j - 1 >= p2 && l < n * m){
+                j--;
+                a.push_back(matrix[i][j]);
+                l++;
+            }
+            p2++;
+            // up
+            while (i - 1 >= s2 && l < n * m){
+                i--;
+                a.push_back(matrix[i][j]);
+                l++;
+            }
+            s2++;
+        }
+        return a;
+    }
+};
