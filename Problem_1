@@ -1,0 +1,35 @@
+class Solution {
+public:
+    bool isToeplitzMatrix(vector<vector<int>>& matrix) {
+        int n = matrix.size(), m = matrix[0].size();
+        bool checker = true;
+
+        for (int i = n - 2; i >= 0 && checker; i--){
+            int j = 0, l = i;
+            int tem;
+            tem = matrix[i][j];
+            while (l + 1 < n && j + 1 < m){
+                if (tem != matrix[l + 1][j + 1])
+                    checker = false;
+                l++;
+                j++;
+            }
+        }
+        for (int i = m - 2; i > 0 && checker; i--){
+            int j = i, l = 0;
+            int tem;
+            tem = matrix[l][i];
+            while (l + 1 < n && j + 1 < m){
+                if (tem != matrix[l + 1][j + 1])
+                    checker = false;
+                l++;
+                j++;
+            }
+        }
+
+        if (checker == true)
+            return true;
+        else 
+            return false;
+    }
+};
