@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool checkPossibility(vector<int>& nums) {
+
+        int n, count = 0, s = 2, l = 0, tem, tem2;
+        n = nums.size();
+        
+        bool ans = false;
+
+        for (int i = 0; i < n - 1; i++){
+            if (nums[i] > nums[i + 1]){
+                count++;
+                tem = i;
+            }
+        }
+
+        tem2 = nums[tem + 1];
+        if (count < 2)
+            while (s > 0){
+                nums[tem + 1] = nums[tem];
+                for (int i = 0; i < n - 1; i++)
+                    if (nums[i] > nums[i + 1])
+                        l++;
+                if (l == 0)
+                    ans = true;
+                s--;
+                nums[tem] = tem2;
+                l = 0;
+            }  
+
+        return ans;
+    }
+};
