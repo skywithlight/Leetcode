@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> matrixReshape(vector<vector<int>>& nums, int r, int c) {
+        
+        int n = nums.size(), m = nums[0].size();
+
+        vector< vector<int> > b(r);
+
+        if (n * m != r * c){
+            return nums;
+        } else {
+            int i = 0, count = 0; 
+            for (int j = 0; j < n; j++)
+                for (int l = 0; l < m; l++){
+                    b[i].push_back(nums[j][l]);
+                    count++;
+                    if (count >= c){
+                        count = 0;
+                        i++;
+                    }
+                }
+            return b;
+        }
+    }
+};
