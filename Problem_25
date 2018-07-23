@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+        int len, sum = 0, tem;
+        len = nums.size();
+        
+        sort (nums.begin(), nums.end());
+        
+        if (len < 3){
+            return nums[len - 1];
+        }
+        
+        for (int i = len - 1; i > 0; i--){
+            if (nums[i] > nums[i - 1]){
+                sum++;
+            }
+            if (sum == 2){
+                tem = nums[i - 1];
+            }
+        }
+        
+        if (sum < 2){
+            tem = nums[len - 1];
+        }
+        
+        return tem;
+    }
+};
